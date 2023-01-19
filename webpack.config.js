@@ -1,7 +1,9 @@
+const webpack = require('webpack');
+
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
     rules: [
@@ -9,9 +11,15 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
         },
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      HOST: '0.0.0.0',
+      PORT: '8080',
+    }),
+  ],
 };
