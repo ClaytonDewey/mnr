@@ -8,7 +8,7 @@ import testData from '../test-data.json';
 
 router.get('/contests', (req, res) => {
   // get the data from mongoDb
-  res.send(testData);
+  res.send({ contests: testData });
 });
 
 // router.get('/contest')
