@@ -4,7 +4,8 @@
   "description": "Video Course (recorded August 2022): **[samer.dev/mnr](https://samer.dev/mnr)**",
   "main": "index.js",
   "scripts": {
-    "dev:server": "tsnd src/server/server.ts"
+    "dev:server": "tsnd src/server/server.ts",
+    "dev:bundler": "webpack -w --mode=development"
   },
   "repository": {
     "type": "git",
