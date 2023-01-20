@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchContestList } from '../api-client';
 
 import ContestPreview from './contest-preview';
+import Header from './header';
 
 const ContestList = ({ initialContests, onContestClick }) => {
   const [contests, setContests] = useState(initialContests);
@@ -13,17 +14,20 @@ const ContestList = ({ initialContests, onContestClick }) => {
   }, []);
 
   return (
-    <div className="contest-list">
-      {contests.map((contest) => {
-        return (
-          <ContestPreview
-            key={contest.id}
-            contest={contest}
-            onClick={onContestClick}
-          />
-        );
-      })}
-    </div>
+    <>
+      <Header message="Naming Contests" />
+      <div className="contest-list">
+        {contests.map((contest) => {
+          return (
+            <ContestPreview
+              key={contest.id}
+              contest={contest}
+              onClick={onContestClick}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 
