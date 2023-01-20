@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Contest from './contest';
 import ContestList from './contest-list';
 
 const App = ({ initialData }) => {
   const [page, setPage] = useState('contestList');
-  const [currentContestId, setCurrentContestId] = useState();
+  const [currentContestId, setCurrentContestId] = useState<
+    string | undefined
+  >();
+
+  useEffect(() => {
+    window.onpopstate = (event) => {
+      const newPage = event.state?.contestId ? 'contest' : 'contestList';
+      setPage(newPage);
+      setCurrentContestId(event.state?.contestId);
+    };
+  });
 
   const navigateToContest = (contestId) => {
+    window.history.pushState({ contestId }, '', `/contests/${contestId}`);
     setPage('contest');
     setCurrentContestId(contestId);
   };
