@@ -1,6 +1,13 @@
-const ContestPreview = ({ contest }) => {
+const ContestPreview = ({ contest, onClick }) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    // Navigate to a new view
+    onClick(contest.id);
+  };
+
   return (
-    <div className="contest-preview">
+    <div className="contest-preview" onClick={handleClick}>
       <div className="category">{contest.categoryName}</div>
       <div className="contest">{contest.contestName}</div>
     </div>
