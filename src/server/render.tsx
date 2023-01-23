@@ -8,17 +8,13 @@ const serverRender = async (req) => {
   const { contestId } = req.params;
 
   const initialData = contestId
-    ? {
-        currentContest: await fetchContest(contestId),
-      }
-    : {
-        contests: await fetchContestList(),
-      };
+    ? { currentContest: await fetchContest(contestId) }
+    : { contests: await fetchContestList() };
 
   const initialMarkup = ReactDOMServer.renderToString(
     <App initialData={initialData} />,
   );
-
+  console.log(initialData);
   return { initialMarkup, initialData };
 };
 
