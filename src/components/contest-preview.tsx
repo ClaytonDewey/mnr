@@ -2,7 +2,6 @@ const ContestPreview = ({ contest, onClick }) => {
   const handleClick = (event) => {
     event.preventDefault();
 
-    // Navigate to a new view
     onClick(contest.id);
   };
 

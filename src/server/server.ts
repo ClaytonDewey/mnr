@@ -13,7 +13,7 @@ server.set('view engine', 'ejs');
 
 server.use('/api', apiRouter);
 
-server.use(['/', '/contests/:contestId'], async (req, res) => {
+server.get(['/', '/contest/:contestId'], async (req, res) => {
   const { initialMarkup, initialData } = await serverRender(req);
   res.render('index', {
     initialMarkup,
@@ -23,7 +23,7 @@ server.use(['/', '/contests/:contestId'], async (req, res) => {
 
 server.listen(config.PORT, config.HOST, () => {
   console.info(
-    `Express server is listening at ${config.SERVER_URL}`,
+    `Express is listening at ${config.SERVER_URL}`,
     `Free Mem: ${os.freemem() / 1024 / 1024}`,
   );
 });

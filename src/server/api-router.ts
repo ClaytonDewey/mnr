@@ -23,7 +23,7 @@ router.get('/contests', async (req, res) => {
   res.send({ contests });
 });
 
-router.get('/contests/:contestId', async (req, res) => {
+router.get('/contest/:contestId', async (req, res) => {
   const client = await connectClient();
 
   const contest = await client

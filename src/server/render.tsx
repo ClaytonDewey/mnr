@@ -14,7 +14,7 @@ const serverRender = async (req) => {
   const initialMarkup = ReactDOMServer.renderToString(
     <App initialData={initialData} />,
   );
-  console.log(initialData);
+
   return { initialMarkup, initialData };
 };
 

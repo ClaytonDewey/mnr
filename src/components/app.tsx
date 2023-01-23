@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import Contest from './contest';
 import ContestList from './contest-list';
 
@@ -16,10 +17,10 @@ const App = ({ initialData }) => {
       setPage(newPage);
       setCurrentContest({ id: event.state?.contestId });
     };
-  });
+  }, []);
 
   const navigateToContest = (contestId) => {
-    window.history.pushState({ contestId }, '', `/contests/${contestId}`);
+    window.history.pushState({ contestId }, '', `/contest/${contestId}`);
     setPage('contest');
     setCurrentContest({ id: contestId });
   };
