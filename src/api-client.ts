@@ -9,7 +9,7 @@ export const fetchContestList = async () => {
 };
 
 export const fetchContest = async (contestId) => {
-  const resp = await axios.get(`${API_SERVER_URL}/contests/${contestId}`);
+  const resp = await axios.get(`${API_SERVER_URL}/contest/${contestId}`);
 
   return resp.data.contest;
 };
