@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetchContestList } from '../api-client';
+import { addNewContest, fetchContestList } from '../api-client';
 
 import ContestPreview from './contest-preview';
 import Header from './header';
@@ -22,9 +22,20 @@ const ContestList = ({ initialContests, onContestClick }) => {
     setShowForm(!showForm);
   };
 
-  const handleSubmit = (event) => {
+  const handleNewContestSubmit = async (event) => {
     event.preventDefault();
     setShowForm(!showForm);
+    const newContestName = event.target.contestName;
+    const newCategoryName = event.target.categoryName;
+    const newDescription = event.target.description;
+    const newContest = await addNewContest({
+      id: '',
+      contestName: newContestName.value,
+      categoryName: newCategoryName.value,
+      description: newDescription.value,
+    });
+    console.log(...initialContests, newContest);
+    // setContests(....initialContests, newContest);
   };
 
   return (
@@ -50,14 +61,25 @@ const ContestList = ({ initialContests, onContestClick }) => {
           </div>
         ) : (
           <div className="contest-preview">
-            <div className="category">Propose a New Name</div>
+            <div className="category">Add a New Contest</div>
             <div className="contest">
-              <form onSubmit={handleSubmit}>
-                <input type="text" name="contestName" />
+              <form onSubmit={handleNewContestSubmit}>
+                <input
+                  type="text"
+                  name="contestName"
+                  placeholder="Enter Contest Name"
+                />
                 <br />
-                <input type="text" name="categoryName" />
+                <input
+                  type="text"
+                  name="categoryName"
+                  placeholder="Enter Contest Category"
+                />
                 <br />
-                <input type="text" name="description" />
+                <textarea
+                  name="description"
+                  placeholder="Enter Contest Description"
+                ></textarea>
                 <br />
                 <button type="submit">Submit</button>
               </form>
