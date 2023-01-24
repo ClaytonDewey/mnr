@@ -26,7 +26,7 @@ const App = ({ initialData }) => {
   };
 
   const navigateToContestList = () => {
-    window.history.pushState({}, '', `/`);
+    window.history.pushState({}, '', '/');
     setPage('contestList');
     setCurrentContest(undefined);
   };
