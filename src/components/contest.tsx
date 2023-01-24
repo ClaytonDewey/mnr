@@ -27,7 +27,7 @@ const Contest = ({ initialContest, onContestListClick }) => {
       contestId: contest.id,
       newNameValue: newNameInput.value,
     });
-    console.log(updatedContest);
+    setContest(updatedContest);
   };
 
   return (
