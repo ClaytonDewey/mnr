@@ -39,7 +39,7 @@ router.post('/contest/:contestId', async (req, res) => {
 
   const { newNameValue } = req.body;
 
-  const doc = await client.collection('contests').findeOneAndUpdate(
+  const doc = await client.collection('contests').findOneAndUpdate(
     { id: req.params.contestId },
     {
       $push: {
